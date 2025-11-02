@@ -1,0 +1,51 @@
+{
+	"compilerOptions": {
+		"composite": true,
+		"tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
+		"target": "ES2022",
+		"useDefineForClassFields": true,
+		"lib": ["ES2022", "DOM", "DOM.Iterable"],
+		"module": "ESNext",
+		"types": ["vite/client"],
+		"skipLibCheck": true,
+
+		/* Bundler mode */
+		"moduleResolution": "bundler",
+		"allowImportingTsExtensions": true,
+		"verbatimModuleSyntax": true,
+		"moduleDetection": "force",
+		"emitDeclarationOnly": true,
+		"jsx": "react-jsx",
+
+		/* Path mapping */
+		"baseUrl": "./src",
+		"paths": {
+			"@constants": ["constants"],  // Maps bare @constants to src/constants/index.ts
+			"@data": ["data"],  // Maps bare @data to src/data/index.json or similar (if needed)
+			"@my-types": ["types"],  // Maps bare @my-types to src/types/index.ts (if needed)
+
+
+			"@components/*": ["components/*"],
+			"@utils/*": ["utils/*"],
+			"@assets/*": ["assets/*"],
+			"@constants/*": ["constants/*"],
+			"@my-types/*": ["types/*"],
+			"@services/*": ["services/*"],
+			"@pages/*": ["pages/*"],
+			"@hooks/*": ["hooks/*"],
+			"@contexts/*": ["contexts/*"],
+			"@layouts/*": ["layouts/*"],
+			"@common/*": ["common/*"],
+			"@data/*": ["data/*"]
+		},
+
+		/* Linting */
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"erasableSyntaxOnly": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedSideEffectImports": true
+	},
+	"include": ["src"]
+}

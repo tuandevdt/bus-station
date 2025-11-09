@@ -7,6 +7,7 @@ export const mockOrders: Order[] = [
     customer: { name: 'Nguyễn Văn A', email: 'a@example.com', phone: '0901234567', isGuest: false },
     createdAt: '2025-04-01T10:00:00',
     departureDate: '2025-04-05',
+    departureTime: '08:00',
     departure: 'Hà Nội',        // Thêm
     destination: 'TP.HCM',      // Thêm
     tripCode: 'HN-SG-0504',
@@ -37,6 +38,7 @@ export const mockOrders: Order[] = [
     customer: { name: 'Lê Thị C', email: 'c@example.com', phone: '0912345678', isGuest: false },
     createdAt: '2025-04-02T14:30:00',
     departureDate: '2025-04-06',
+    departureTime: '14:30',
     departure: 'Đà Nẵng',
     destination: 'Huế',
     tripCode: 'DN-HUE-0604',
@@ -60,6 +62,7 @@ export const mockOrders: Order[] = [
     customer: { name: 'Khách vãng lai', email: null, phone: '0934567890', isGuest: true },
     createdAt: '2025-04-03T09:15:00',
     departureDate: '2025-04-07',
+    departureTime: '07:00',
     departure: 'Nha Trang',
     destination: 'Đà Lạt',
     tripCode: 'NT-DL-0704',

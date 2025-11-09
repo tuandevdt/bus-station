@@ -40,7 +40,14 @@ export default function OrderDetailDialog({
 
   return (
     <Dialog open={open} onClose={onClose} maxWidth="lg" fullWidth>
-      <DialogTitle sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", pr: 7 }}>
+      <DialogTitle
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          pr: 7,
+        }}
+      >
         <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
           <BusIcon color="primary" />
           <Box>
@@ -67,7 +74,10 @@ export default function OrderDetailDialog({
             />
           </Box>
         </Box>
-        <IconButton onClick={onClose} sx={{ position: "absolute", right: 8, top: 8 }}>
+        <IconButton
+          onClick={onClose}
+          sx={{ position: "absolute", right: 8, top: 8 }}
+        >
           <CloseIcon />
         </IconButton>
       </DialogTitle>
@@ -92,6 +102,16 @@ export default function OrderDetailDialog({
                   <strong>Ngày khởi hành:</strong>{" "}
                   {new Date(order.departureDate).toLocaleDateString("vi-VN")}
                 </Box>
+                <Box>
+                  <strong>Giờ khởi hành:</strong>{" "}
+                  <Typography
+                    component="span"
+                    fontWeight="bold"
+                    color="primary"
+                  >
+                    {order.departureTime}
+                  </Typography>
+                </Box>
               </Stack>
 
               <Divider sx={{ my: 2 }} />
@@ -104,11 +124,17 @@ export default function OrderDetailDialog({
                   <strong>Điểm đi:</strong> <strong>{order.departure}</strong>
                 </Box>
                 <Box>
-                  <strong>Điểm đến:</strong> <strong>{order.destination}</strong>
+                  <strong>Điểm đến:</strong>{" "}
+                  <strong>{order.destination}</strong>
                 </Box>
                 <Box>
                   <strong>Mã chuyến:</strong>{" "}
-                  <Chip label={order.tripCode} size="small" color="primary" variant="outlined" />
+                  <Chip
+                    label={order.tripCode}
+                    size="small"
+                    color="primary"
+                    variant="outlined"
+                  />
                 </Box>
               </Stack>
 

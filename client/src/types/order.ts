@@ -23,6 +23,7 @@ export interface Order {
   customer: Customer;
   createdAt: string;
   departureDate: string;
+  departureTime: string;
   departure: string;      // Thêm
   destination: string;    // Thêm
   tripCode: string;

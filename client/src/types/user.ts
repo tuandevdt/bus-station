@@ -60,8 +60,10 @@ export interface UpdateProfileDTO {
 	address?: string | null;
 	gender?: Gender | null;
 	avatar?: string | null;
-	dateOfBirth?: Date | null;
+	dateOfBirth?: Date | string | null;
 	phoneNumber?: string | null;
+	role?: string | null;
+	email?: string | null;
 }
 
 export interface UpdateAdminProfileDTO {

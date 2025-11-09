@@ -39,6 +39,7 @@ export const ROUTES = {
 	DASHBOARD_VEHICLE_TYPE: "/dashboard/vehicle-type",
 	DASHBOARD_TRIP: "/dashboard/trip",
 	DASHBOARD_USER: "/dashboard/user",
+	DASHBOARD_ORDER: "/dashboard/order",
 	DASHBOARD_SYSTEM: "/dashboard/system",
 	PROFILE: "/profile",
 	VERIFY_EMAIL: "/verify-email",

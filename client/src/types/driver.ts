@@ -67,3 +67,22 @@ export interface UpdateDriverDTO {
 	issuingAuthority?: string | null;
 	isSuspended?: boolean;
 }
+
+export interface DriverRecord {
+  id: string;
+  fullName: string;
+  email: string;
+  phone: string;
+  gender: "Male" | "Female";
+  dateOfBirth: string; // YYYY-MM-DD
+  address: string;
+  licenseNumber: string;
+  licenseClass: string;
+  issueDate: string;
+  expiryDate: string;
+  status: "active" | "inactive" | "suspended";
+  totalTrips: number;
+  totalEarnings: number;
+  rating: number;
+  avatar?: string;
+}

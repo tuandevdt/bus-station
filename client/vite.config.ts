@@ -45,6 +45,7 @@ export default ({ mode }: { mode: string }) => {
 				"@layouts": path.resolve(__dirname, "./src/layouts"),
 				"@common": path.resolve(__dirname, "./src/common"),
 				"@data": path.resolve(__dirname, "./src/data"),
+				"@schemas": path.resolve(__dirname, "./src/schemas"),
 			},
 		},
 		build: {

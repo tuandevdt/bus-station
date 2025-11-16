@@ -122,6 +122,20 @@ export const router = createBrowserRouter([
         ],
       },
       {
+        path: "vehicle",
+        children: [
+          {
+            path: "",
+            lazy: async () => {
+              const { default: Vehicle } = await import(
+                "@pages/admin/vehicle/Vehicle"
+              );
+              return { Component: Vehicle };
+            },
+          },
+        ],
+      },
+      {
         path: "trip",
         children: [
           {
@@ -174,6 +188,33 @@ export const router = createBrowserRouter([
                 "@pages/admin/trip/route/EditRoutePage"
               );
               return { Component: EditRoutePage };
+            },
+          },
+          {
+            path: "driver/create",
+            lazy: async () => {
+              const { default: CreateDriver } = await import(
+                "@pages/admin/driver/components/DriverCreate"
+              );
+              return { Component: CreateDriver };
+            },
+          },
+          {
+            path: "assignment/create",
+            lazy: async () => {
+              const { default: AssignmentCreate } = await import(
+                "@pages/admin/assignment/components/AssignmentCreate"
+              );
+              return { Component: AssignmentCreate };
+            },
+          },
+          {
+            path: "assignment/:id",
+            lazy: async () => {
+              const { default: AssignmentDetail } = await import(
+                "@pages/admin/assignment/components/AssignmentDetail"
+              );
+              return { Component: AssignmentDetail };
             },
           },
         ],

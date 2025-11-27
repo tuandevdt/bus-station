@@ -227,6 +227,15 @@ export const router = createBrowserRouter([
             },
           },
           {
+            path: "driver/edit/:id",
+            lazy: async () => {
+              const { default: DriverEdit } = await import(
+                "@pages/admin/driver/components/DriverEdit"
+              );
+              return { Component: DriverEdit };
+            },
+          },
+          {
             path: "assignment/create",
             lazy: async () => {
               const { default: AssignmentCreate } = await import(

@@ -36,7 +36,8 @@
 			"@contexts/*": ["contexts/*"],
 			"@layouts/*": ["layouts/*"],
 			"@common/*": ["common/*"],
-			"@data/*": ["data/*"]
+			"@data/*": ["data/*"],
+			"@schemas/*": ["schemas/*"]
 		},
 
 		/* Linting */

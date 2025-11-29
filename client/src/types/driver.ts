@@ -18,19 +18,63 @@
  * @property {string | null} [issuingAuthority] - Authority that issued the license
  * @property {boolean} [isSuspended] - Indicates if the license is suspended (defaults to false)
  */
+/**
+ * Client-side type definitions for Drivers.
+ * Based on server/src/types/driver.ts
+ */
+
+/**
+ * Represents a driver's profile on the client-side.
+ */
+export interface Driver {
+  id: number;
+  fullname?: string | null;
+  phoneNumber?: string | null;
+  avatar?: string | null;
+  hiredAt?: string | null; // ISO Date string
+  isActive: boolean;
+  licenseNumber?: string | null;
+  licenseCategory?: string | null;
+  licenseIssueDate?: string | null; // ISO Date string
+  licenseExpiryDate?: string | null; // ISO Date string
+  issuingAuthority?: string | null;
+  isSuspended: boolean;
+  createdAt: string; // ISO Date string
+  updatedAt: string; // ISO Date string
+}
+
+/**
+ * DTO for creating a new Driver profile.
+ */
 export interface CreateDriverDTO {
-	id: number;
-	fullname?: string | null;
-	phoneNumber?: string | null;
-	avatar?: string | null;
-	hiredAt?: Date | null;
-	isActive?: boolean;
-	licenseNumber?: string | null;
-	licenseCategory?: string | null;
-	licenseIssueDate?: Date | null;
-	licenseExpiryDate?: Date | null;
-	issuingAuthority?: string | null;
-	isSuspended?: boolean;
+  fullname?: string | null;
+  phoneNumber?: string | null;
+  avatar?: string | null;
+  hiredAt?: string | null; // ISO Date string
+  isActive?: boolean;
+  licenseNumber?: string | null;
+  licenseCategory?: string | null;
+  licenseIssueDate?: string | null; // ISO Date string
+  licenseExpiryDate?: string | null; // ISO Date string
+  issuingAuthority?: string | null;
+  isSuspended?: boolean;
+}
+
+/**
+ * DTO for updating an existing Driver profile.
+ */
+export interface UpdateDriverDTO {
+  fullname?: string | null;
+  phoneNumber?: string | null;
+  avatar?: string | null;
+  hiredAt?: string | null; // ISO Date string
+  isActive?: boolean;
+  licenseNumber?: string | null;
+  licenseCategory?: string | null;
+  licenseIssueDate?: string | null; // ISO Date string
+  licenseExpiryDate?: string | null; // ISO Date string
+  issuingAuthority?: string | null;
+  isSuspended?: boolean;
 }
 
 /**
@@ -54,16 +98,59 @@ export interface CreateDriverDTO {
  * @property {boolean} [isSuspended] - Updated suspension status
  */
 export interface UpdateDriverDTO {
-	id: number;
-	fullname?: string | null;
-	phoneNumber?: string | null;
-	avatar?: string | null;
-	hiredAt?: Date | null;
-	isActive?: boolean;
-	licenseNumber?: string | null;
-	licenseCategory?: string | null;
-	licenseIssueDate?: Date | null;
-	licenseExpiryDate?: Date | null;
-	issuingAuthority?: string | null;
-	isSuspended?: boolean;
+  id: number;
+  fullname?: string | null;
+  phoneNumber?: string | null;
+  avatar?: string | null;
+  hiredAt?: string | null;
+  isActive?: boolean;
+  licenseNumber?: string | null;
+  licenseCategory?: string | null;
+  licenseIssueDate?: string | null;
+  licenseExpiryDate?: string | null;
+  issuingAuthority?: string | null;
+  isSuspended?: boolean;
+}
+// Server response interface (matches server/src/models/driver.ts)
+export interface DriverFromServer {
+  id: number;
+  fullname: string | null;
+  phoneNumber?: string | null;
+  avatar?: string | null;
+  hiredAt?: Date | null;
+  isActive?: boolean;
+  licenseNumber: string | null;
+  licenseCategory: string | null;
+  licenseIssueDate: Date | null;
+  licenseExpiryDate: Date | null;
+  issuingAuthority: string | null;
+  isSuspended: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
+export interface DriverRecord {
+  id: string;
+  fullName: string;
+  email: string; // Will be derived from fullname or placeholder
+  phone: string;
+  gender: "Male" | "Female"; // Will be placeholder
+  dateOfBirth: string; // YYYY-MM-DD, will be placeholder
+  address: string; // Will be placeholder
+  licenseNumber: string;
+  licenseClass: string;
+  issueDate: string;
+  expiryDate: string;
+  status: "active" | "inactive" | "suspended";
+  totalTrips: number; // Will be placeholder
+  totalEarnings: number; // Will be placeholder
+  rating: number; // Will be placeholder
+  avatar?: string;
+}
+
+// API Response types
+export interface DriversResponse {
+  rows?: DriverFromServer[];
+  count?: number;
+  [key: string]: any; // For other possible envelope structures
 }

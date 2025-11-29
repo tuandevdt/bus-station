@@ -80,6 +80,33 @@ export const router = createBrowserRouter([
         },
       },
       {
+        path: ROUTES.MY_RATINGS,
+        lazy: async () => {
+          const { default: MyRatings } = await import(
+            "@pages/landing/MyRatings"
+          );
+          return { Component: MyRatings };
+        },
+      },
+      {
+        path: ROUTES.RATING_NEW,
+        lazy: async () => {
+          const { default: NewRating } = await import(
+            "@pages/landing/RateOrEditRating"
+          );
+          return { Component: NewRating };
+        },
+      },
+      {
+        path: ROUTES.RATING_EDIT,
+        lazy: async () => {
+          const { default: EditRating } = await import(
+            "@pages/landing/RateOrEditRating"
+          );
+          return { Component: EditRating };
+        },
+      },
+      {
         path: "*",
         element: <Navigate to={ROUTES.NOT_FOUND} replace />,
       },
@@ -106,6 +133,20 @@ export const router = createBrowserRouter([
           const { default: Home } = await import("@pages/admin/home/Dashboard");
           return { Component: Home };
         },
+      },
+      {
+        path: "vehicle",
+        children: [
+          {
+            path: "",
+            lazy: async () => {
+              const { default: Vehicle } = await import(
+                "@pages/admin/vehicle/Vehicle"
+              );
+              return { Component: Vehicle };
+            },
+          },
+        ],
       },
       {
         path: "vehicle",
@@ -174,6 +215,42 @@ export const router = createBrowserRouter([
                 "@pages/admin/trip/route/EditRoutePage"
               );
               return { Component: EditRoutePage };
+            },
+          },
+          {
+            path: "driver/create",
+            lazy: async () => {
+              const { default: CreateDriver } = await import(
+                "@pages/admin/driver/components/DriverCreate"
+              );
+              return { Component: CreateDriver };
+            },
+          },
+          {
+            path: "driver/edit/:id",
+            lazy: async () => {
+              const { default: DriverEdit } = await import(
+                "@pages/admin/driver/components/DriverEdit"
+              );
+              return { Component: DriverEdit };
+            },
+          },
+          {
+            path: "assignment/create",
+            lazy: async () => {
+              const { default: AssignmentCreate } = await import(
+                "@pages/admin/assignment/components/AssignmentCreate"
+              );
+              return { Component: AssignmentCreate };
+            },
+          },
+          {
+            path: "assignment/:id",
+            lazy: async () => {
+              const { default: AssignmentDetail } = await import(
+                "@pages/admin/assignment/components/AssignmentDetail"
+              );
+              return { Component: AssignmentDetail };
             },
           },
         ],

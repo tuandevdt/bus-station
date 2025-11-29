@@ -80,6 +80,33 @@ export const router = createBrowserRouter([
         },
       },
       {
+        path: ROUTES.MY_RATINGS,
+        lazy: async () => {
+          const { default: MyRatings } = await import(
+            "@pages/landing/MyRatings"
+          );
+          return { Component: MyRatings };
+        },
+      },
+      {
+        path: ROUTES.RATING_NEW,
+        lazy: async () => {
+          const { default: NewRating } = await import(
+            "@pages/landing/RateOrEditRating"
+          );
+          return { Component: NewRating };
+        },
+      },
+      {
+        path: ROUTES.RATING_EDIT,
+        lazy: async () => {
+          const { default: EditRating } = await import(
+            "@pages/landing/RateOrEditRating"
+          );
+          return { Component: EditRating };
+        },
+      },
+      {
         path: "*",
         element: <Navigate to={ROUTES.NOT_FOUND} replace />,
       },
@@ -197,6 +224,15 @@ export const router = createBrowserRouter([
                 "@pages/admin/driver/components/DriverCreate"
               );
               return { Component: CreateDriver };
+            },
+          },
+          {
+            path: "driver/edit/:id",
+            lazy: async () => {
+              const { default: DriverEdit } = await import(
+                "@pages/admin/driver/components/DriverEdit"
+              );
+              return { Component: DriverEdit };
             },
           },
           {

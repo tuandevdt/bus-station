@@ -31,10 +31,14 @@ export const TopCustomersList = () => {
 
   const getRankColor = (index: number) => {
     switch (index) {
-      case 0: return "#2e7d32";
-      case 1: return "#1976d2";
-      case 2: return "#f9a825";
-      default: return "#666";
+      case 0:
+        return "#2e7d32";
+      case 1:
+        return "#1976d2";
+      case 2:
+        return "#f9a825";
+      default:
+        return "#666";
     }
   };
 
@@ -44,7 +48,13 @@ export const TopCustomersList = () => {
         Top 5 khách hàng VIP
       </Typography>
 
-      <List sx={{ bgcolor: "background.paper", borderRadius: 2, overflow: "hidden" }}>
+      <List
+        sx={{
+          bgcolor: "background.paper",
+          borderRadius: 2,
+          overflow: "hidden",
+        }}
+      >
         {sortedData.map((customer, index) => (
           <ListItem key={index} disablePadding sx={{ px: 2, py: 1.5 }}>
             <ListItemAvatar>
@@ -84,7 +94,13 @@ export const TopCustomersList = () => {
               secondary={
                 <>
                   {/* DÙNG <> THAY <Box> ĐỂ TRÁNH LỖI <div> IN <p> */}
-                  <Box sx={{ display: "flex", justifyContent: "space-between", mb: 0.5 }}>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      justifyContent: "space-between",
+                      mb: 0.5,
+                    }}
+                  >
                     <Typography variant="caption" color="text.secondary">
                       Doanh thu
                     </Typography>

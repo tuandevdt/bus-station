@@ -1,25 +1,51 @@
 import { Box, Typography } from "@mui/material";
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
-import { dailyRevenueData } from "@data/mockData";
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
+import type { DailyRevenueRecord } from "@my-types/dashboard";
 
 const formatCurrency = (value: number) =>
-  new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND", minimumFractionDigits: 0 }).format(value);
+  new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+    minimumFractionDigits: 0,
+  }).format(value);
 
 const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload?.[0]) {
     return (
-      <Box sx={{ bgcolor: "rgba(0,0,0,0.85)", color: "#fff", p: 1, borderRadius: 1 }}>
-        <Typography variant="body2">{formatCurrency(payload[0].value)}</Typography>
+      <Box
+        sx={{
+          bgcolor: "rgba(0,0,0,0.85)",
+          color: "#fff",
+          p: 1,
+          borderRadius: 1,
+        }}
+      >
+        <Typography variant="body2">
+          {formatCurrency(payload[0].value)}
+        </Typography>
       </Box>
     );
   }
   return null;
 };
 
-export const DailyRevenueChart = () => {
-  const data = dailyRevenueData.map((d) => ({
-    ...d,
-    formatted: formatCurrency(d.revenue),
+interface DailyRevenueChartProps {
+  data?: DailyRevenueRecord[];
+}
+
+export const DailyRevenueChart = ({ data = [] }: DailyRevenueChartProps) => {
+  const chartData = data.map((d) => ({
+    date: d.period,
+    revenue: d.value,
+    formatted: formatCurrency(d.value),
   }));
 
   return (
@@ -29,9 +55,7 @@ export const DailyRevenueChart = () => {
       </Typography>
       <Box sx={{ width: "100%", height: 220 }}>
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart
-            data={data}
-          >
+          <AreaChart data={chartData}>
             <defs>
               <linearGradient id="dailyGradient" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="#1976d2" stopOpacity={0.8} />

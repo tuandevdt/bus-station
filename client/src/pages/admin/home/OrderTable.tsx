@@ -20,11 +20,17 @@ import {
 import { mockOrders } from "@data/mockData";
 
 const formatCurrency = (value: number) =>
-  new Intl.NumberFormat("vi-VN", { style: "currency", currency: "VND", minimumFractionDigits: 0 }).format(value);
+  new Intl.NumberFormat("vi-VN", {
+    style: "currency",
+    currency: "VND",
+    minimumFractionDigits: 0,
+  }).format(value);
 
 export const OrderTable = () => {
   const [search, setSearch] = useState("");
-  const [statusFilter, setStatusFilter] = useState<"All" | "Paid" | "Cancelled">("All");
+  const [statusFilter, setStatusFilter] = useState<
+    "All" | "Paid" | "Cancelled"
+  >("All");
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -34,12 +40,16 @@ export const OrderTable = () => {
         order.ticketId.toLowerCase().includes(search.toLowerCase()) ||
         order.trip.toLowerCase().includes(search.toLowerCase()) ||
         order.customer.toLowerCase().includes(search.toLowerCase());
-      const matchesStatus = statusFilter === "All" || order.status === statusFilter;
+      const matchesStatus =
+        statusFilter === "All" || order.status === statusFilter;
       return matchesSearch && matchesStatus;
     });
   }, [search, statusFilter]);
 
-  const paginatedData = filteredData.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+  const paginatedData = filteredData.slice(
+    page * rowsPerPage,
+    page * rowsPerPage + rowsPerPage
+  );
 
   return (
     <Box>
@@ -53,7 +63,11 @@ export const OrderTable = () => {
         />
         <FormControl size="small" sx={{ minWidth: 120 }}>
           <InputLabel>Status</InputLabel>
-          <Select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value as any)} label="Status">
+          <Select
+            value={statusFilter}
+            onChange={(e) => setStatusFilter(e.target.value as any)}
+            label="Status"
+          >
             <MenuItem value="All">All</MenuItem>
             <MenuItem value="Paid">Paid</MenuItem>
             <MenuItem value="Cancelled">Cancelled</MenuItem>
@@ -104,7 +118,9 @@ export const OrderTable = () => {
         page={page}
         onPageChange={(_, p) => setPage(p)}
         rowsPerPage={rowsPerPage}
-        onRowsPerPageChange={(e) => setRowsPerPage(parseInt(e.target.value, 10))}
+        onRowsPerPageChange={(e) =>
+          setRowsPerPage(parseInt(e.target.value, 10))
+        }
       />
     </Box>
   );
